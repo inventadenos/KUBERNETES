@@ -1,0 +1,26 @@
+#replica set controller 
+
+apiVersion: apps/v1
+kind: ReplicaSet
+metadata:
+  name: aj-01
+    
+spec:
+  # modify replicas according to your case
+  replicas: 6
+  selector:
+    matchLabels:
+      app: login
+    matchExpressions: 
+      - {key: env, operator: In, values: [dev]}
+
+  template:
+    metadata:
+      name: aj-01
+      labels: 
+        app: login
+        env: dev
+    spec:
+      containers:
+      - name: aj-01
+        image: docker.io/inventadenos/tomcatimage:2.0
