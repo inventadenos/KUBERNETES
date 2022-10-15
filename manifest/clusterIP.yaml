@@ -1,0 +1,17 @@
+# Deploy ClusterIP Services
+apiVersion: v1
+kind: Service
+metadata:
+  name: aj-clusterip
+  labels:
+    app: nginx-app
+    
+
+spec:
+  selector:
+    app: login
+    env: dev
+  type: ClusterIP
+  ports:
+  - port: 8080
+    targetPort: 8080

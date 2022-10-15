@@ -1,0 +1,18 @@
+# Deploy Load Balancer Service
+apiVersion: v1
+kind: Service
+metadata:
+  name: aj-loadbalancer
+  labels:
+    app: nginx-app
+    
+
+spec:
+  selector:
+    app: login
+    env: dev
+  type: LoadBalancer
+  ports:
+  - port: 80
+    nodePort: 31000
+    targetPort: 80

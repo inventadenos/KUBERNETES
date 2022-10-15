@@ -12,7 +12,8 @@ availability_zone = "us-east-1a"
 map_public_ip_on_launch = "true"
 vpc_id = aws_vpc.vpc.id
  tags = {
-    "kubernetes.io/cluster/ed-eks-01" = "shared"
+    "kubernetes.io/cluster/ufuoma-cluster" = "shared"
+    "kubernetes.io/role/elb" = "1"
   }
 }
 
@@ -22,7 +23,8 @@ availability_zone = "us-east-1b"
 vpc_id = aws_vpc.vpc.id
 map_public_ip_on_launch = "true"
 tags = {
-    "kubernetes.io/cluster/ed-eks-01" = "shared"
+    "kubernetes.io/cluster/ufuoma-cluster" = "shared"
+    "kubernetes.io/role/elb" = "1"
   }
 }
 
@@ -31,7 +33,7 @@ cidr_block = "192.168.3.0/24"
 availability_zone = "us-east-1c"
 vpc_id = aws_vpc.vpc.id
 tags = {
-    "kubernetes.io/cluster/ed-eks-01" = "shared"
+    "kubernetes.io/cluster/ufuoma-cluster" = "shared"
   }
 }
 
@@ -40,7 +42,7 @@ cidr_block = "192.168.4.0/24"
 availability_zone = "us-east-1d"
 vpc_id = aws_vpc.vpc.id
 tags = {
-    "kubernetes.io/cluster/ed-eks-01" = "shared"
+    "kubernetes.io/cluster/ufuoma-cluster" = "shared"
   }
 }
 

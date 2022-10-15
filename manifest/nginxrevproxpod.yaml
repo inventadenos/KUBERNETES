@@ -1,0 +1,16 @@
+#pod manifest file
+#pods are resources within the k8s cluster
+#there are numerous resources that exist in a k8s cluster
+#apiVersion, Kind, metadata and spec are the 4 primary elements that must be in your manifest file
+
+apiVersion: v1
+kind: Pod
+metadata:
+  name: nginx-01
+  labels: 
+    app: login
+    env: dev
+spec:
+  containers:
+  - name: nginx-01
+    image: docker.io/inventadenos/mynginx:2.0
