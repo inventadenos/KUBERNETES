@@ -24,3 +24,13 @@ spec:
       containers:
       - name: aj-01
         image: docker.io/inventadenos/tomcatimage:2.0
+        readinessProbe:
+          tcpSocket:
+            port: 8080
+          initialDelaySeconds: 5
+          periodSeconds: 10
+        livenessProbe:
+          tcpSocket:
+            port: 8080
+          initialDelaySeconds: 15
+          periodSeconds: 20
