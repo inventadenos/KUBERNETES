@@ -3,11 +3,12 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: aj-01
+  name: aj-dev01
+  namespace: dev
     
 spec:
   # modify replicas according to your case
-  replicas: 6
+  replicas: 2
   selector:
     matchLabels:
       app: login
@@ -24,11 +25,18 @@ spec:
       containers:
       - name: aj-01
         image: docker.io/inventadenos/tomcatimage:2.0
+        resources:
+          requests:
+            memory: "150Mi"
+            cpu: "250m"
+          limits:
+            memory: "200Mi"
+            cpu: "500m"
         readinessProbe:
           tcpSocket:
             port: 8080
-          initialDelaySeconds: 5
-          periodSeconds: 10
+          initialDelaySeconds: 15
+          periodSeconds: 20
         livenessProbe:
           tcpSocket:
             port: 8080

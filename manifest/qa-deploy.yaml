@@ -1,0 +1,44 @@
+#replica set controller 
+
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: aj-qa01
+  namespace: qa
+    
+spec:
+  # modify replicas according to your case
+  replicas: 2
+  selector:
+    matchLabels:
+      app: login
+    matchExpressions: 
+      - {key: env, operator: In, values: [dev]}
+
+  template:
+    metadata:
+      name: aj-01
+      labels: 
+        app: login
+        env: dev
+    spec:
+      containers:
+      - name: aj-01
+        image: docker.io/inventadenos/tomcatimage:2.0
+        resources:
+          requests:
+            memory: "150Mi"
+            cpu: "250m"
+          limits:
+            memory: "200Mi"
+            cpu: "500m"
+        readinessProbe:
+          tcpSocket:
+            port: 8080
+          initialDelaySeconds: 15
+          periodSeconds: 20
+        livenessProbe:
+          tcpSocket:
+            port: 8080
+          initialDelaySeconds: 15
+          periodSeconds: 20
