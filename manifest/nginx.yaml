@@ -6,11 +6,12 @@
 apiVersion: v1
 kind: Pod
 metadata:
-  name: nginx-01
+  name: ajnginx
   labels: 
-    app: login
+    app: nginx
     env: dev
 spec:
   containers:
-  - name: nginx-01
+  - name: con-nginx
     image: docker.io/inventadenos/mynginx:2.0
+    

@@ -5,8 +5,6 @@ metadata:
   name: aj-clusterip
   labels:
     app: nginx-app
-    
-
 spec:
   selector:
     app: login

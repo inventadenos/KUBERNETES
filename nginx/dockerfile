@@ -1,4 +1,7 @@
 FROM amazonlinux 
 RUN amazon-linux-extras install nginx1 -y
+RUN curl -LO https://dl.k8s.io/release/v1.23.0/bin/linux/amd64/kubectl && \
+    chmod +x ./kubectl && \
+    mv ./kubectl /usr/local/bin/kubectl
 COPY ./nginx.conf /etc/nginx/nginx.conf
 CMD ["nginx", "-g", "daemon off;"]

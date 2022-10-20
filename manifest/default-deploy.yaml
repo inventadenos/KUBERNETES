@@ -1,0 +1,30 @@
+#replica set controller 
+
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: aj-dev01
+  namespace: default
+    
+spec:
+  serviceAccountName: ufuoma-svc-acct
+  automountServiceAccountToken: true
+  # modify replicas according to your case
+  replicas: 2
+  selector:
+    matchLabels:
+      app: login
+    matchExpressions: 
+      - {key: env, operator: In, values: [dev]}
+
+  template:
+    metadata:
+      name: aj-01
+      labels: 
+        app: login
+        env: dev
+    spec:
+      containers:
+      - name: aj-01
+        image: docker.io/inventadenos/mynginx:2.0
+      

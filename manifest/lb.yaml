@@ -4,12 +4,10 @@ kind: Service
 metadata:
   name: aj-loadbalancer
   labels:
-    app: nginx-app
-    
-
+    app: app
 spec:
   selector:
-    app: login
+    app: nginx
     env: dev
   type: LoadBalancer
   ports:
